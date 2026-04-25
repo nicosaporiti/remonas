@@ -157,16 +157,63 @@
           <p class="eyebrow light">Muy pronto</p>
           <h2>remonas.cl</h2>
           <p>Estamos preparando algo hermoso para ti.</p>
-          <a class="btn secondary" href="mailto:hola@remonas.cl"
-            >Sé la primera en enterarte</a
-          >
+          <button class="btn secondary" type="button" data-open-waitlist>
+            Sé la primera en enterarte
+          </button>
         </div>
       </section>
     </main>
+
+    <dialog class="waitlist-modal" aria-labelledby="waitlist-title">
+      <div class="modal-shell">
+        <button class="modal-close" type="button" aria-label="Cerrar formulario">
+          &times;
+        </button>
+        <div class="modal-copy">
+          <p class="eyebrow">Próximo lanzamiento</p>
+          <h2 id="waitlist-title">Sé la primera en enterarte</h2>
+        </div>
+        <iframe
+          class="tally-frame"
+          src="https://tally.so/embed/WOep8a?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+          title="Registro para el próximo lanzamiento de MONA"
+          loading="lazy"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+        ></iframe>
+      </div>
+    </dialog>
 
     <footer class="footer">
       <img src="assets/logo/mona-logo.svg" alt="MONA" />
       <p>© MONA. Carteras tejidas a mano.</p>
     </footer>
+
+    <script>
+      const waitlistModal = document.querySelector(".waitlist-modal");
+      const openWaitlistButtons = document.querySelectorAll("[data-open-waitlist]");
+      const closeWaitlistButton = document.querySelector(".modal-close");
+
+      if (waitlistModal instanceof HTMLDialogElement && closeWaitlistButton) {
+        openWaitlistButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            if (!waitlistModal.open) {
+              waitlistModal.showModal();
+            }
+          });
+        });
+
+        closeWaitlistButton.addEventListener("click", () => {
+          waitlistModal.close();
+        });
+
+        waitlistModal.addEventListener("click", (event) => {
+          if (event.target === waitlistModal) {
+            waitlistModal.close();
+          }
+        });
+      }
+    </script>
   </body>
 </html>

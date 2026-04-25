@@ -33,6 +33,9 @@ img {
   max-width: 100%;
   display: block;
 }
+button {
+  font: inherit;
+}
 a {
   color: inherit;
   text-decoration: none;
@@ -89,6 +92,12 @@ a {
   min-height: 48px;
   padding: 0 28px;
   border: 1px solid transparent;
+  cursor: pointer;
+}
+.btn:focus-visible,
+.modal-close:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
 }
 .primary {
   background: var(--gold);
@@ -365,6 +374,65 @@ h3 {
   margin: 18px 0 28px;
   color: rgba(255, 255, 255, 0.88);
 }
+.waitlist-modal {
+  width: min(92vw, 720px);
+  max-height: 88vh;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  outline: 0;
+}
+.waitlist-modal::backdrop {
+  background: rgba(24, 26, 22, 0.72);
+  backdrop-filter: blur(6px);
+}
+.modal-shell {
+  position: relative;
+  overflow: auto;
+  max-height: 88vh;
+  padding: clamp(28px, 4vw, 42px);
+  background: #fffdf9;
+  border: 1px solid rgba(185, 138, 58, 0.26);
+  border-radius: 8px;
+  box-shadow: 0 28px 90px rgba(24, 26, 22, 0.34);
+}
+.modal-copy {
+  max-width: 520px;
+  padding-right: 56px;
+}
+.modal-copy h2 {
+  font-size: clamp(36px, 5vw, 58px);
+}
+.modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: inline-grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--ivory);
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 28px;
+  line-height: 1;
+}
+.modal-close:hover {
+  border-color: rgba(185, 138, 58, 0.55);
+  color: var(--gold);
+}
+.tally-frame {
+  display: block;
+  width: 100%;
+  min-height: 350px;
+  height: min(48vh, 430px);
+  margin-top: 26px;
+  border: 0;
+  background: #fffdf9;
+}
 .footer {
   display: flex;
   align-items: center;
@@ -459,5 +527,24 @@ h3 {
   .swatches img {
     width: 88px;
     height: 88px;
+  }
+  .waitlist-modal {
+    width: calc(100vw - 28px);
+    max-height: 92vh;
+  }
+  .modal-shell {
+    max-height: 92vh;
+    padding: 26px 18px 20px;
+  }
+  .modal-copy {
+    padding-right: 48px;
+  }
+  .modal-close {
+    top: 14px;
+    right: 14px;
+  }
+  .tally-frame {
+    min-height: 420px;
+    height: 58vh;
   }
 }
